@@ -1,0 +1,217 @@
+
+/*
+São criadas as classes dentro do .html, com essas classes é possível modificar suas caracteristicas pelo css!
+*/
+
+/*
+O que é o root? raiz?
+
+Aparentemente o root são "variaveis" em que vc pode colocar codigo de cores
+para serem usados em algumas classes
+*/
+
+:root{
+    --c1: #000000;
+    --c2: #00eeff;
+    --c3: #148F20;
+    --c4: #fffb00;
+}
+
+.fundo{
+    background-image: url("img/monkeystyle.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+
+}
+
+.menu{
+    background-color: var(--c2);
+    width: 100%;
+    height: 110px;
+    margin-top:2px;
+    border-style: solid;
+    border-color: var(--c4);
+}
+
+.menu ul{ 
+    list-style:none;/*Tirar o estilo lista, tipo pontos*/
+}
+.menu h2{
+    
+    white-space: nowrap;
+    background: var(--c4);
+    width: fit-content;
+}
+.menu ul li{
+    display:inline-block;
+}
+
+.menu ul li a{
+    /*background-color: var(--c2);*/
+    
+    color: var(--c1);
+    text-decoration: none; /*Tirar linha em baixo da frase*/
+    padding:10px;
+    padding-bottom:13px;
+    padding-right: 50;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+    transition: background 0.40s;
+}
+
+.menu ul li a:hover{/*O hover significa: Quando o mouse estiver em cima do botão*/
+    text-align:right;
+    background-color: var(--c3);
+    background-image: url(img/banana.png);background-repeat: no-repeat;
+    background-size: 40px 40px;
+    color: var(--c2);
+    text-decoration: none;
+    padding:10px;
+    padding-right: 50;
+    padding-bottom:20px;
+
+    transition: background 0.40s;
+}
+.Separar{
+    position: absolute;
+    left: 950px;
+    margin-top: -75px;
+}
+
+
+.asdsa2d{
+    background-color: var(--c2);
+    color: green;
+}
+
+
+/*Texto prinxipal "Macaco Style" com animações */
+.TextoPrincipal{
+    position:absolute;
+    top: 20%;
+    right: 50%;
+    color: var(--c4);
+    
+}
+.TextoPrincipal:hover{
+    font-size: 20px;
+    font-style: italic;
+    color: var(--c3);
+    animation-name: macacoStyle;
+    animation-duration: 1s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+    
+}
+/*
+*/
+/*
+.menu ul#sub{
+    list-style:none;
+    padding:0px;
+    margin: 0px;
+    background-color: var(--c3);
+    margin-top: 12px;
+    text-align: left;
+    width: 150%;
+    margin-left: 5px;
+}
+*/
+.menu ul ul{
+    display:none; /*Esconder os blocos*/
+    position:absolute;
+    left: 0;
+    width:180px;
+    
+}
+
+.menu ul li:hover ul{ /*Ao ativar, mostrar os blocos de ul*/
+    display: block;
+}
+
+.menu ul li ul li{
+    position: absolute;
+    display: block;
+    background-color: var(--c2);
+    top: 20px;
+    border-left: solid;
+    border-bottom: solid;
+    border-right: solid;
+    border-color: var(--c4);
+
+}
+
+
+
+
+.menu ul ul li{
+    display: block;
+    padding-top: 5px;
+    
+}
+
+.menu ul ul li a{
+    
+    display: block;
+    color: var(--c1);
+    text-align: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.menu ul ul li a:hover{
+    display: block;
+    color: var(--c2);
+    text-align:right;
+    padding-left: 1px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
+ 
+}
+/*
+*/
+
+/* key da animação */
+@keyframes macacoStyle {
+    0%{
+        color: var(--c3);
+    }
+    70%{
+        transform: rotate(360deg);
+        color: violet
+    }
+    100%{
+        transform: rotate(360deg);
+        color: red
+    }
+}
+
+.torta{
+    white-space:pre-line;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    right: 43%;
+    top: 400px;
+    width: 800px;
+    height: 350px;
+    color: var(--c2);
+}
+.torta:hover{
+    white-space:pre-line;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    right: 43%;
+    top: 400px;
+    width: 800px;
+    height: 350px;
+    color: var(--c2);
+}
+
+.menu ul Separar{
+    display:none;
+    background-color: yellow;
+    margin-left: 600px;
+}
