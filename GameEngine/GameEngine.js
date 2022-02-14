@@ -38,9 +38,6 @@ let gravidade = 0.6;
 let start;
 let delay;
 
-
-
-//GAME ENGINE AGORA SERA UMA GRANDE CLASSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
  * @param {Game} game 
  */
