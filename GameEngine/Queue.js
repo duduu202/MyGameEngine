@@ -1,0 +1,1 @@
+/////////adicinar funções/metodos em uma fila? (tick e draw) // CALCELADO (talvez temporariamente)

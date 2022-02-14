@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html> <!--lang="en"> -->
+<head>
+    <title>Happy Bird</title>
+    <!--<meta charset="UTF-8"> -->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <link rel="stylesheet" href="/style.css"> <!--nota: lembre de "instalar" o css '-_- -->
+
+    <!--Se dentro de algum arquivo.js tiver uma funcão com o mesmo nome do arquivo anterior, essa funcão será subscrevida-->
+    <script src="/GameEngine/Game.js"></script>
+    <script src="/GameEngine/GraphicsEngine.js"></script>
+    <script src="/GameEngine/GameObject.js"></script>
+    <script src="/GameEngine/Handler.js"></script>
+    <script src="/GameEngine/Objetos.js"></script>
+    <script src="/GameEngine/CollisionDetection.js"></script>
+    <script src="/GameEngine/Matematica.js"></script>
+    <script src="/GameEngine/Teclado.js"></script>
+    <script src="/GameEngine/GameEngine.js"></script>
+    
+    <script type="text/javascript" src="/Games/happyBird.js"></script>
+
+    
+
+    
+
+</head>
+<body>
+
+    <!--<script src="Game.js"></script>-->
+    <h4>
+        <p>-Problemas: Game engine não esta pronto,</p>
+        <p>-As bolas, ao colidirem, perdem a aleatoriedade por algum motivo</p>
+    </h4>
+
+    <button type="button" onclick="carregarHappyBird()">Teste de geral</button>
+    <button type="button" onclick="setParar(true)">Parar game loop</button>
+    <button type="button" onclick="setParar(false)">continuar game loop</button>
+    
+
+    <p id="showCoords">Coordenadas</p>
+    
+    <h1 id ="mlog"></script></h1>
+    <script>
+        let screenLog = document.querySelector('#mlog');
+        document.addEventListener('mousemove', logKey);
+
+        function logKey(e) {
+        screenLog.innerText = `
+            Pagina X/Y: ${mousePageX}, ${mousePageX}
+            Screen X/Y: ${mouseClientX}, ${mouseClientY}
+            Velocidade X/Y: ${velMouseX}, ${velMouseY}
+            Distancia do 0/0 X/Y: ${distancia(0,0,mousePageX, mousePageY)}
+            16.7-Delay do loop (negativo = ruim): ${16.7-delay}
+            `;
+        }
+    </script>
+
+    <p id="demo"></p>
+    <div class="gCircle"></div>
+
+    <div onclick="showCoords(event)" class="window"></div>
+
+    <p>Move your mouse to see its position.</p>
+    <p id="screen-log"></p>
+
+    <button type="button" onclick="tickEDraw();" >TICK e DRAW</button>
+    <!--<button type="button" onclick="placeDiv(b.getX(),b.getY(), 'gCircle')">placeDiv</button>-->
+    <!--<button type="button" onclick="b.getY()">teste getY()</button>-->
+    <!--<button type="button" onclick="tamanhoDiv(b.getRaio(),b.getRaio(), 'gCircle')">tamanhoDiv</button>-->
+    
+
+    <input type="button" value="+" onclick="addDiv()">
+
+    <div id="content">
+    </div>
+    <script>
+        //a ordem importa nesse caso, obviamente, não da pra mover uma div, sem ter criado ela antes
+        //tamanhoDiv(b.getRaio(),b.getRaio(), "gCircle");
+        //document.write(b.getVelCair());
+        //var b = new Bola();
+        //b.teste();
+    </script>
+
+<script>
+    //GameLoop(); //É necessario dar a iniciativa no loop infinito //isso esta dentro do iniciar()
+    //iniciar();
+    //teste();
+</script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,64 @@
+/*
+Observação: NÃO COLOQUE UM NUMERO NO PRIMEIRO CARACTER NO ID... igual o nome das variaveis...
+  clip-path: polygon(); - clip-path "corta" um pedaço do css, então para que ele funcione adequadamente,
+  seria necessario determinar: height: 100%; e width: 100%;
+*/
+
+
+
+.ball{
+  height: 20px;
+  width: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+}
+html, body {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+
+  width: 99%;
+  height: auto;
+
+}
+.gPlataforma{
+  background-color: rgb(255, 0, 0) !important;
+  
+}
+
+
+.teste {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(255, 0, 0);
+  display: inline-block;
+  position: absolute;
+}
+#clickme {
+    margin-top: 20px;
+    margin-left: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+
+  /* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #00b7ff;
+  cursor: pointer;
+  font-size: 18px;
+}
+body{
+  background-color: rgb(0, 195, 255);
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active, .btn:hover {
+  background-color: #666;
+  color: white;
+}
