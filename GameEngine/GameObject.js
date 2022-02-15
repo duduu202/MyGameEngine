@@ -2,20 +2,12 @@
  * Essa é uma das classes mais importantes do jogo, pois a classe abstrada GameObject é a classe mãe
  * de todos os objetos do jogo
  * 
- * 
 */
 
 //CLASSE ABSTRATA
 // massa = kg
 class GameObject {
-	//////////////////////////////Tudo funcionando! :D agora vamos criar a lista de funções para ser chamadas! >:D
-	//+Isso nos permitirá adicionar as funções que serão chamadas no draw() ou no tick()
-
-	//São listas contendo todos os metodos que serão chamados no draw() e no Tick() ((CANCELADO talvez temporariamente))
-	//#ListaDeMetodosDraw = [];
-	//#ListaDeMetodosTick = []; 
-
-
+	//////////////////////////////Tudo funcionando! :D
 	/**
 	 @class GameObject
 	 */
@@ -77,7 +69,7 @@ class GameObject {
 		this.polygon.novaPosicao(this.x, this.y); //Atualizar o mainX e mainY, e então retornar o polygono
 		return this.polygon;
 	}
-	////////////////////
+	//Sobscreva essa função na classe filha
 	colididoCom(object) {
 
 	}
