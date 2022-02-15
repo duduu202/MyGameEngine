@@ -229,15 +229,7 @@ function aplicarFisicas(object) {
     pegarComMouse(object);
   }
 
-  if (object.getVelTotal() < 0.1){
-    object.velX = 0;
-    object.velY = 0;
-    object.caindo = false;
-    console.log(object.getVelTotal());
-  }
-  else{
-    object.caindo = true;
-  }
+
 
 
 
@@ -248,8 +240,7 @@ function aplicarFisicas(object) {
 
 
     collide(object);
-    if (object.isColidirTela())
-      colideScreen(object);
+
 
   }
 
@@ -264,38 +255,61 @@ function aplicarFisicas(object) {
  * @param {GameObject} object 
  */
 function collide(object) {
-  aplicarColisaoEntreObjetos2(object);
-
-
+  if (object.isColidirTela()){
+    if(colideScreen(object)){
+      verificarObjetoParado(object);
+    }
+  }
+    
+  if(aplicarColisaoEntreObjetos2(object)){
+    verificarObjetoParado(object);
+  }
 }
+
+function verificarObjetoParado(object){
+  if (object.getVelTotal() < 1.0){
+    object.velX = 0;
+    object.velY = 0;
+    object.caindo = false;
+    console.log(object.getVelTotal());
+  }
+  else{
+    object.caindo = true;
+  }
+}
+
 function colideScreen(object) {
+  let colidiu = false;
   if (object.isCorpoEstatico())
-    return;
+    return false;
 
   if (object.x > screenWidth) {
     object.x = screenWidth;
     object.velX = (object.velX * -1 * object.elasticidade) * 0.9;
+    colidiu = true;
   }
   if (object.x < 0) {
     object.x = 0;
     object.velX = (object.velX * -1 * object.elasticidade) * 0.9;
+    colidiu = true;
   }
-
   if (object.y > screenHeight) {
     object.y = screenHeight;
     object.velY = (object.velY * -1 * object.elasticidade) * 0.9;
     object.velX = (object.velX * chaoAtrito) * 0.9;
+    colidiu = true;
   }
   if (object.y < 0) {
     object.y = 0;
     object.velY = (object.velY * -1 * object.elasticidade) * 0.9;
+    colidiu = true;
     //object.setVelX(object.getVelX()*chaoAtrito);
   }
 
   //TESTE
   //if(object.getId() == 1){
 
-
+  return colidiu;
 
 
 }
@@ -308,7 +322,7 @@ function aplicarColisaoEntreObjetos2(object) {
   //Problema: verificações desnecessárias.
   //Se um objetoA colidir com um objetoB, não precisa verificar a colisão de objetoB com A,
   //pois essa verificação ja foi feita
-
+  let colidiu = false;
   let objects = game.handler.getTodosObjetos();
   for (var i = 0; i < objects.length; i++) {
     if (objects[i].getId() !== object.getId()) {
@@ -317,11 +331,12 @@ function aplicarColisaoEntreObjetos2(object) {
       if (detectarColisaoPoligonos(object.getVertices(), objects[i].getVertices())) {
 
         object.colididoCom(objects[i]);
-
+        colidiu = true;
       }
       //}
     }
   }
+  return colidiu;
 }
 function corrigirColisao() {
   //object.setVelX(object.getVelX*-1);
