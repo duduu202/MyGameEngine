@@ -220,6 +220,7 @@ function foraTela(x, y) {
 /**
  * @param {GameObject} object 
  */
+
 function aplicarFisicas(object) {
   var tempX = object.x, tempY = object.y;
   //tempX = object.getX();
@@ -229,21 +230,14 @@ function aplicarFisicas(object) {
     pegarComMouse(object);
   }
 
-
-
-
-
   if (object.isCorpoFisico()) {
     if (object.isAfetadoPelaGravidade()) {
       object.velY = (object.velY + gravidade);
     }
-
-
-    collide(object);
-
-
+    if(trueCada(1)){
+      collide(object);
+    }
   }
-
 
   if (!object.isCorpoEstatico()) {
     object.addX(object.velX);
@@ -266,16 +260,42 @@ function collide(object) {
   }
 }
 
+//SEMPRE TRUE, pois esta com erro
+var toleranciaObjetoParado = 0;
+var toleranciaVelocidadeObjetoParado = 0.60000000001;
 function verificarObjetoParado(object){
-  if (object.getVelTotal() < 1.0){
+
+  return;
+  if(object.getVelTotal() < toleranciaVelocidadeObjetoParado){
+    console.log(object.getVelTotal());
     object.velX = 0;
     object.velY = 0;
+    return;
+  }
+
+  if(diferenca(object.antigoY, object.y) < toleranciaObjetoParado){
+    object.velY = object.velY *0.2;
     object.caindo = false;
-    console.log(object.getVelTotal());
   }
   else{
     object.caindo = true;
   }
+  if(diferenca(object.antigoX, object.x) < toleranciaObjetoParado){
+    object.velX = object.velX *0.2;
+  }
+  /*
+  if (object.getVelTotal() < 1.0){ //Se ele ficar muito lento, ele ficará parado para sempre
+    object.velX = 0;
+    object.velY = 0;
+    //object.caindo = false;
+    console.log(object.getVelTotal());
+  }
+  else{
+    //object.caindo = true;
+  }
+  
+  //object.caindo = true;
+  */
 }
 
 function colideScreen(object) {
@@ -285,23 +305,23 @@ function colideScreen(object) {
 
   if (object.x > screenWidth) {
     object.x = screenWidth;
-    object.velX = (object.velX * -1 * object.elasticidade) * 0.9;
+    object.velX = (object.velX * -1 * object.elasticidade) * 0.8;
     colidiu = true;
   }
   if (object.x < 0) {
     object.x = 0;
-    object.velX = (object.velX * -1 * object.elasticidade) * 0.9;
+    object.velX = (object.velX * -1 * object.elasticidade) * 0.8;
     colidiu = true;
   }
   if (object.y > screenHeight) {
     object.y = screenHeight;
-    object.velY = (object.velY * -1 * object.elasticidade) * 0.9;
-    object.velX = (object.velX * chaoAtrito) * 0.9;
+    object.velY = (object.velY * -1 * object.elasticidade) * 0.8;
+    object.velX = (object.velX * chaoAtrito) * 0.8;
     colidiu = true;
   }
   if (object.y < 0) {
     object.y = 0;
-    object.velY = (object.velY * -1 * object.elasticidade) * 0.9;
+    object.velY = (object.velY * -1 * object.elasticidade) * 0.8;
     colidiu = true;
     //object.setVelX(object.getVelX()*chaoAtrito);
   }

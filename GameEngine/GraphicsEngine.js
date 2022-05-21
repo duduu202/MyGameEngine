@@ -149,7 +149,7 @@ function addDiv(className, setId, cssStyle, posicaoX, posicaoY, html) {
     }
     //div.innerHTML = getCircleCSS();
     //div.innerHTML = '' + cssStyle;
-    document.getElementById('content').appendChild(div);
+    document.body.appendChild(div);
     atualizarDiv(setId, posicaoX, posicaoY);
 }
 function removerElementoPorId(id) {

@@ -134,5 +134,17 @@ function teste3(){
     var onlyId = id.split("GameObject_");
     console.log(onlyId);
 }
-teste3();
+//teste3();
+var z1 = 2;
+var z2 = -3;
+var difference = function (z1, z2) { return Math.abs(z1 - z2); }
 
+function diferenca (num1, num2) {
+    if (num1 > num2) {
+      return num1 - num2
+    } else {
+      return num2 - num1
+    }
+  }
+
+console.log(diferenca(z1, z2));

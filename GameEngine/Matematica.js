@@ -214,3 +214,11 @@ function direcao(x1, y1, x2, y2) {
 
     return new pvector(divForX, divForY);
 }
+
+function diferenca (num1, num2) {
+    if (num1 > num2) {
+      return num1 - num2
+    } else {
+      return num2 - num1
+    }
+  }

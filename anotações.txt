@@ -1,0 +1,49 @@
+create sequence seq_car;
+CREATE TABLE cargo (
+    funcionarios_fun_id INTEGER NOT NULL DEFAULT nextval("seq_car),
+    car_id              INTEGER NOT NULL,
+    car_titulo          VARCHAR(30),
+    car_salario         FLOAT
+);
+
+CREATE UNIQUE INDEX cargo__idx ON
+    cargo (
+        funcionarios_fun_id
+    ASC );
+
+ALTER TABLE cargo ADD CONSTRAINT cargo_pk PRIMARY KEY ( car_id );
+
+create sequence seq_dep;
+CREATE TABLE departamentos (
+    dep_id   INTEGER NOT NULL DEFAULT nextval("seq_dep"),
+    dep_nome VARCHAR(30)
+);
+
+ALTER TABLE departamentos ADD CONSTRAINT departamentos_pk PRIMARY KEY ( dep_id );
+
+create sequence seq_fun;
+CREATE TABLE funcionarios (
+    fun_id               INTEGER NOT NULL DEFAULT nextval("seq_fun"),
+    fun_nome             VARCHAR(50) NOT NULL,
+    cargo_car_id         INTEGER NOT NULL,
+    departamentos_dep_id INTEGER
+);
+
+CREATE UNIQUE INDEX funcionarios__idx ON
+    funcionarios (
+        cargo_car_id
+    ASC );
+
+ALTER TABLE funcionarios ADD CONSTRAINT funcionarios_pk PRIMARY KEY ( fun_id );
+
+ALTER TABLE cargo
+    ADD CONSTRAINT cargo_funcionarios_fk FOREIGN KEY ( funcionarios_fun_id )
+        REFERENCES funcionarios ( fun_id );
+
+ALTER TABLE funcionarios
+    ADD CONSTRAINT funcionarios_cargo_fk FOREIGN KEY ( cargo_car_id )
+        REFERENCES cargo ( car_id );
+
+ALTER TABLE funcionarios
+    ADD CONSTRAINT funcionarios_departamentos_fk FOREIGN KEY ( departamentos_dep_id )
+        REFERENCES departamentos ( dep_id );. Expected " char
