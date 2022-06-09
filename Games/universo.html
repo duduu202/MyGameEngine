@@ -36,6 +36,7 @@
     <button type="button" onclick="carregarUniverso()">Teste de geral</button>
     <button type="button" onclick="setParar(true)">Parar game loop</button>
     <button type="button" onclick="setParar(false)">continuar game loop</button>
+    <button type="button" onclick="zerarVelocidade()">ZERAR a velocidade de todos os corpos</button>
     
 
     <p id="showCoords">Coordenadas</p>
@@ -51,7 +52,7 @@
             Screen X/Y: ${mouseClientX}, ${mouseClientY}
             Velocidade X/Y: ${velMouseX}, ${velMouseY}
             Distancia do 0/0 X/Y: ${distancia(0,0,mousePageX, mousePageY)}
-            16.7-Delay do loop (negativo = ruim): ${16.7-delay}
+            `+1/tickPorSegundo*1000+`-Delay do loop (negativo = ruim): ${16.7-delay}
             `;
         }
     </script>
@@ -70,7 +71,7 @@
     <!--<button type="button" onclick="tamanhoDiv(b.getRaio(),b.getRaio(), 'gCircle')">tamanhoDiv</button>-->
     
 
-    <input type="button" value="+" onclick="addDiv()">
+    <input type="button" value="Diminuir velocidade" onclick="diminuirVelocidade()">
 
     <div id="content">
     </div>

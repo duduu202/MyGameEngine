@@ -83,6 +83,10 @@ function atualizarCssObjeto(css, id, nomeClasse) {
     head.appendChild(s);
     //console.log("css de objeto atualizado " + id + " " + nomeClasse);
 }
+function atualizarCssCor(id, rgb) {
+    var el = document.getElementById(id);
+    el.style.backgroundColor = rgb;
+}
 
 (function () {
     //656 = 0.97

@@ -1,5 +1,6 @@
 let G = 6.67428*10^-11;
-
+let delta = 1;
+const modoOtimizado = false;
 let universo = undefined;
 
 class Universo extends Game {
@@ -38,7 +39,7 @@ class Universo extends Game {
                     if (distancia > 10) { //0.02
                            
                         //Newton's Law of Universal Gravitation
-                        var F = (G * m1 * m2) / Math.pow(distancia, 2);
+                        var F = ((G * m1 * m2) / Math.pow(distancia, 2)) * deltaTime;
                         
     
                         //Algulo em radianos
@@ -53,15 +54,64 @@ class Universo extends Game {
                         //Mesma força para ambos dos corpos :)
                         objetos[j].velX += ((divForX * F) / Math.pow(m2, 2) * 2);
                         objetos[j].velY += ((divForY * F) / Math.pow(m2, 2) * 2);
-                        
-    
-    
-    
-    
-    
                     }
-                
+                    
+                    if(trueCada(10) && !modoOtimizado){
+
+                    
+                    //CORES (de acordo com a sua velocidade)
+                    var vxc = objetos[i].velX;
+                    var vyc = objetos[i].velY;
+
+                    if (vxc < 0)
+                        vxc = vxc * -1;
+                    if (vyc < 0)
+                        vyc = vyc * -1;
+
+                    var media = (vxc + vyc) / 2;
+
+                    var corR = media * 50;
+                    var corG = media * 10;//media*1;
+                    var corB = media * 5;//media*1;
+                    
+                    objetos[i].cor = "rgb("+corR+","+corG+"," +corB+")";
+                    atualizarCssCor(objetos[i].getId(), objetos[i].cor);
+
+                    /////////2
+                    vxc = objetos[j].velX;
+                    vyc = objetos[j].velY;
+
+                    if (vxc < 0)
+                        vxc = vxc * -1;
+                    if (vyc < 0)
+                        vyc = vyc * -1;
+
+                    media = (vxc + vyc) / 2;
+
+                    var corR2 = media * 50;
+                    var corG2 = media * 10;//media*1;
+                    var corB2 = media * 5;//media*1;
+
+                    objetos[j].cor = "rgb("+corR2+","+corG2+"," +corB2+")";
+                    atualizarCssCor(objetos[j].getId(), objetos[i].cor);
+                    }
+
             }
+        }
+    }
+
+    zerarVelocidade(){
+        var objetos = this.handler.getTodosObjetos();
+        for (var i = 0; i < objetos.length; i++) {
+            objetos[i].velX = 0;
+            objetos[i].velY = 0;
+        }
+    }
+    diminuirVelocidade(){
+        var objetos = this.handler.getTodosObjetos();
+        for (var i = 0; i < objetos.length; i++) {
+            objetos[i].velX = objetos[i].velX/2;
+            objetos[i].velY = objetos[i].velY/2;
         }
     }
 }
@@ -77,7 +127,7 @@ class CorpoCeleste extends GameObject{
         this.velY = 1.0;
         this.velX = 1.0;
         this.massa = 1;
-        this.cor = "#eeff00";
+        this.cor = "rgb("+getNumeroAleatorio(50, 255)+","+getNumeroAleatorio(50, 255)+"," +getNumeroAleatorio(50, 255)+")";
         this.elasticidade = 0.6;
         this.atrito = 0.5;
         this.setCorpoEstatico(false);
@@ -165,7 +215,7 @@ function carregarUniverso(){
     planeta2.setAfetadoPelaGravidade(false);
     universo.adicionarObjeto(planeta2);
     */
-    gerarCorposAleatorios(50);
+    gerarCorposAleatorios(20);
 
     iniciarGameEngine();
 
@@ -176,19 +226,29 @@ function carregarUniverso(){
 function gerarCorposAleatorios(n){
     for(var i = 0; i<n; i++){
         var planeta = new CorpoCeleste();
-        planeta.x = getNumeroAleatorio(100, 800);
-        planeta.y = getNumeroAleatorio(100, 600);
-        var tamanho = getNumeroAleatorio(1, 40);
+        planeta.x = getNumeroAleatorio(200, 700);
+        planeta.y = getNumeroAleatorio(200, 700);
+
+        var tamanho = getNumeroAleatorio(10, 40);
+
         planeta.setRaio(tamanho);
         planeta.criarCSS();
         planeta.velX = getNumeroAleatorio(-2, 2);
         planeta.velY = getNumeroAleatorio(-2, 2);
         planeta.massa = tamanho*10;
         planeta.setCorpoFisico(true);
+        planeta.CorpoFisico = false; //COLISÃO DESLIGADA
         planeta.setPegarComMouse(true);
         planeta.setCorpoEstatico(false);
         planeta.setAfetadoPelaGravidade(false);
         planeta.colidirTela = true;
         universo.adicionarObjeto(planeta);
     }
+}
+
+function zerarVelocidade(){
+    universo.zerarVelocidade();
+}
+function diminuirVelocidade(){
+    universo.diminuirVelocidade();
 }

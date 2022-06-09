@@ -20,7 +20,9 @@ criado anteriormente no projeto java ? (Projeto SurvivalSpace) - Talvez  ((FEITO
       de um loop para atualizar tudo, abra o Matematica.js para mais informações
 
 */
+let deltaTime = 1;
 
+let tickPorSegundo = 60;
 let parar = false;
 let iniciado = false;
 let screenWidth = 1280;
@@ -122,7 +124,7 @@ function GameLoop() {
     game.handler.handlerDraw();
 
     delay = performance.now() - start;
-    setTimeout(GameLoop, 16.7 - delay);
+    setTimeout(GameLoop, (1/tickPorSegundo)*1000 - delay);
 
     velMouseX = 0;
     velMouseY = 0;
@@ -230,18 +232,18 @@ function aplicarFisicas(object) {
     pegarComMouse(object);
   }
 
-  if (object.isCorpoFisico()) {
-    if (object.isAfetadoPelaGravidade()) {
-      object.velY = (object.velY + gravidade);
-    }
-    if(trueCada(1)){
-      collide(object);
-    }
+
+  if (object.isAfetadoPelaGravidade()) {
+    object.velY = (object.velY + gravidade);
+  }
+  if(trueCada(1)){
+    collide(object);
   }
 
+
   if (!object.isCorpoEstatico()) {
-    object.addX(object.velX);
-    object.addY(object.velY);
+    object.addX(object.velX*deltaTime);
+    object.addY(object.velY*deltaTime);
   }
 
 }
@@ -249,12 +251,16 @@ function aplicarFisicas(object) {
  * @param {GameObject} object 
  */
 function collide(object) {
+  //mesmo se o corpo não for fisico, ele ainda pode colidir com a tela
   if (object.isColidirTela()){
     if(colideScreen(object)){
       verificarObjetoParado(object);
     }
   }
-    
+
+  if (!object.isCorpoFisico()) //Se for um corpo fisico, detectar colisão entre objetos
+    return;
+
   if(aplicarColisaoEntreObjetos2(object)){
     verificarObjetoParado(object);
   }

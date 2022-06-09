@@ -1,4 +1,5 @@
 //let handler; //Handler publico, mas deve ser declarado adequadamente no inciar, antes de tudo
+
 var teste = false;
 var mygame;
 function iniciar(mygame){
