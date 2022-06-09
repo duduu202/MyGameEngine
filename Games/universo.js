@@ -191,18 +191,18 @@ function carregarUniverso(){
     /*
     var planeta = new CorpoCeleste();
     planeta.x = 400;
-    planeta.y = 200;
+    planeta.y = 400;
     planeta.setRaio(20);
     planeta.criarCSS();
     planeta.velX = 0.4;
     planeta.velY = 0.4;
-    planeta.massa = 200;
+    planeta.massa = 10000;
     planeta.setCorpoFisico(true);
     planeta.setPegarComMouse(true);
     planeta.setCorpoEstatico(false);
     planeta.setAfetadoPelaGravidade(false);
     universo.adicionarObjeto(planeta);
-    
+    /*
     var planeta2 = new CorpoCeleste();
     planeta2.x = 450;
     planeta2.y = 200;
