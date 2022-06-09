@@ -1,0 +1,160 @@
+
+/*
+Observação: NÃO COLOQUE UM NUMERO NO PRIMEIRO CARACTER NO ID... igual o nome das variaveis...
+  clip-path: polygon(); - clip-path "corta" um pedaço do css, então para que ele funcione adequadamente,
+  seria necessario determinar: height: 100%; e width: 100%;
+*/
+
+
+
+.ball{
+    height: 20px;
+    width: 20px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+  }
+  html, body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  
+    width: 99%;
+    height: auto;
+  
+  }
+  .gPlataforma{
+    background-color: rgb(255, 0, 0) !important;
+    
+  }
+  
+  
+  .teste {
+    height: 25px;
+    width: 25px;
+    background-color: rgb(255, 0, 0);
+    display: inline-block;
+    position: absolute;
+  }
+  #clickme {
+      margin-top: 20px;
+      margin-left: 100px;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+  
+  
+    /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #00b7ff;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  body{
+    background-color: rgb(0, 46, 107);
+  }
+  
+  /* Style the active class, and buttons on mouse-over */
+  .active, .btn:hover {
+    background-color: #666;
+    color: white;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /*                       */ 
+  
+  :root{
+    --c1: #01859c;
+    --c2: #001761;
+    --c3: #ffffff;
+    --c4: #000000;
+  }
+  .Principal{
+    background-color: var(--c3);
+    background-image: url("img/Fundo.jpg");
+  
+    height: 100%;
+    width: 100%;
+  }
+  
+  .Menu{
+    background-color: var(--c1);
+    width: 100%;
+    height: 81px;
+  }
+  /*Ajustando Nome da empresa*/
+  .Menu nomeEmpresa{
+    position: absolute;
+    color: var(--c2);
+    font-size: 200%;
+  }
+  /*Ajustando posição da imagem*/
+  .Menu img{
+    margin-top: 10px;
+    margin-left: 35px;
+  }
+  .Menu ul{
+    list-style:none;
+  }
+  /*Alinhando items e ajustando posição*/
+  .Menu ul li{
+    margin-top: 5px;
+    display:inline-block; 
+  }
+  
+  /*Separando login e cadastrar*/
+  .Autenticar{
+    display:inline-block; 
+    margin-left: 800px;
+  }
+  /*Configurando botões*/
+  .Menu ul li a {
+    background-color: var(--c1);
+    text-decoration: none;
+    padding: 10px;
+    color: var(--c2);
+    transition: background 0.40s;
+  }
+  /*Animação simples sobre os botões*/
+  .Menu ul li a:hover{
+    border-bottom: solid;
+    color: var(--c3);
+  
+    transition: color 0.40s;
+  }
+  
+  /*Configurando primeiro item mostrando no site*/
+  .Primeiro{
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: absolute;
+    top: 200px;
+  
+    font-family: initial;
+    color: var(--c3);
+  
+    width: 100%;
+    height: 300px;
+  }
+  

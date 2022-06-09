@@ -144,7 +144,7 @@ function distancia(x1, y1, x2, y2) {
     return distancia;
 }
 function getNumeroAleatorio(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.random() * (max+1 - min) + min;
 }
 function cada(ticks) {
     eDivisivel = loopCount % ticks == 0;
