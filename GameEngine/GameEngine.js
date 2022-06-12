@@ -120,8 +120,12 @@ function GameLoop() {
     //tickEDraw();
     game.tick();
     game.handler.handlerTick();
-    game.draw();
-    game.handler.handlerDraw();
+
+    if(trueCada(3)){
+      game.draw();
+      game.handler.handlerDraw();
+    }
+
 
     delay = performance.now() - start;
     setTimeout(GameLoop, (1/tickPorSegundo)*1000 - delay);

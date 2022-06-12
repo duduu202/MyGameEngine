@@ -172,18 +172,20 @@ class GameObject {
 	//configuradas
 	gameObjectTick() {
 		if ((this.antigoX != this.x) || (this.antigoY != this.y)) {
-			atualizarDiv(this.id, this.x, this.y);
 
 			this.antigoX = this.x;
 			this.antigoY = this.y;
+		}
+
+		aplicarFisicas(this);
+	}
+	gameObjectDraw() {
+		if ((this.antigoX != this.x) || (this.antigoY != this.y)) {
+			atualizarDiv(this.id, this.x, this.y);
 
 			if (this.drawHitbox == true)
 				atualizarDiv(`hitbox` + this.id, this.x, this.y);
 		}
-
-		aplicarFisicas(this);
-
-
 	}
 	tick() {
 		/*

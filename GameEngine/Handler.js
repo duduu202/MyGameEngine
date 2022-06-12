@@ -35,6 +35,7 @@ class Handler{
         //alert("handlerDraw funcionou " + this.objects.length);
         for(let i = 0; i < this.objects.length; i++){
             this.objects[i].draw();
+            this.objects[i].gameObjectDraw();
             //alert(this.objects[i].getClassName());
         }
         //alert("draw acabou");

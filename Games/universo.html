@@ -33,10 +33,9 @@
         <p>-As bolas, ao colidirem, perdem a aleatoriedade por algum motivo</p>
     </h4>
 
-    <button type="button" onclick="carregarUniverso()">Teste de geral</button>
+    <button type="button" onclick="carregarUniverso()">Iniciar</button>
     <button type="button" onclick="setParar(true)">Parar game loop</button>
     <button type="button" onclick="setParar(false)">continuar game loop</button>
-    <button type="button" onclick="zerarVelocidade()">ZERAR a velocidade de todos os corpos</button>
     
 
     <p id="showCoords">Coordenadas</p>
@@ -65,14 +64,18 @@
     <p>Move your mouse to see its position.</p>
     <p id="screen-log"></p>
 
-    <button type="button" onclick="tickEDraw();" >TICK e DRAW</button>
+    <button type="button" onclick="tickEDraw();" >TICK e DRAW</button><button type="button" onclick="zerarVelocidade()">ZERAR a velocidade de todos os corpos</button>
     <!--<button type="button" onclick="placeDiv(b.getX(),b.getY(), 'gCircle')">placeDiv</button>-->
     <!--<button type="button" onclick="b.getY()">teste getY()</button>-->
     <!--<button type="button" onclick="tamanhoDiv(b.getRaio(),b.getRaio(), 'gCircle')">tamanhoDiv</button>-->
     
 
     <input type="button" value="Diminuir velocidade" onclick="diminuirVelocidade()">
-
+    <h2>Delta Time: (pode afetar a física)</h2>
+    <input type="button" value="+" onclick="aumentarDeltaTime()"><input type="button" value="-" onclick="diminuirDeltaTime()"><input type="button" value="Resetar" onclick="resetarDeltaTime()">
+    <h2>Ticks por segundo</h2>
+    <input type="button" value="t+" onclick="aumentarTick()"><input type="button" value="t-" onclick="diminuirTick()"><input type="button" value="tResetar" onclick="resetarTick()">
+    
     <div id="content">
     </div>
     <script>
