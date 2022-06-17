@@ -17,8 +17,7 @@ var distance = (differenceX * differenceX) + (differenceY * differenceY);
 
 distance = Math.sqrt(distance);
 
-//Gravitational force formula
-
+//Gravitational force formula<br/>
 var F = ((G * mass1 * m2) / Math.pow(distance, 2));
 
 //Calculate the direction
