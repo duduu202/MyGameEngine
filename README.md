@@ -2,9 +2,9 @@
 Browsers games without using a game engine, or canvas for render, only HTML, CSS and Javascript
 
 ---Gravity simulation - My solution---
+teste
 
-
-//universal gravitational constant
+//universal gravitational constant <br/>
 G = (6.67428* Math.pow(10, -11));
 
 //pythagorean theorem to calculate the distance
