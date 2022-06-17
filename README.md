@@ -28,6 +28,7 @@ objects[j].velX += ((divForX * F) / Math.pow(mass2, 2) * 2)*-1 * deltaTime;
 objects[j].velY += ((divForY * F) / Math.pow(mass2, 2) * 2)*-1 * deltaTime;
 
 //And that's it! :D
+
 https://user-images.githubusercontent.com/95447103/174227350-6b776c2a-0513-473c-b535-58d18d08554d.mp4
 
 
