@@ -5,11 +5,9 @@ Browsers games without using a game engine, or canvas for render, only HTML, CSS
 
 
 //universal gravitational constant
-
 G = (6.67428* Math.pow(10, -11));
 
 //pythagorean theorem to calculate the distance
-
 var differenceX = x2 - x1;
 var differenceY = y2 - y1;
 var distance = (differenceX * differenceX) + (differenceY * differenceY);
