@@ -36,7 +36,7 @@ class Universo extends Game {
                     //std::cout << distancia <<" " << i << j << "\n";
     
                     //OTIMIZAÇÃO temporaria e errada, pois corpos gigantes tem alcance maior de gravidade
-                    if (distancia > 1){ //&& distancia < 75000) { //0.02
+                    if (distancia > 5){ //&& distancia < 75000) { //0.02
                            
                         //Newton's Law of Universal Gravitation
                         
@@ -187,25 +187,26 @@ function carregarUniverso(){
 
     inserirGame(universo);
 
-    
+    /*
     var planeta = new CorpoCeleste();
-    planeta.x = 100+500;
+    planeta.x = 100+500+100;
     planeta.y = 700;
-    planeta.setRaio(40);
+    planeta.setRaio(10);
     planeta.criarCSS();
     //planeta.velX = 0.4;
-    //planeta.velY = 0.4;
-    planeta.massa = 6000*10000000000;
+    planeta.velY = 0.4;
+    planeta.massa = 600;
     planeta.setCorpoFisico(true);
     planeta.setPegarComMouse(true);
     planeta.setCorpoEstatico(false);
     planeta.setAfetadoPelaGravidade(false);
     planeta.colidirTela = false;
     universo.adicionarObjeto(planeta);
-
+*/
+/*
     var planeta2 = new CorpoCeleste();
     planeta2.x = 100+500;
-    planeta2.y = 700;
+    planeta2.y = 200; //700
     planeta2.setRaio(40);
     planeta2.criarCSS();
     //plane2ta.velX = 0.4;
@@ -218,7 +219,22 @@ function carregarUniverso(){
     planeta2.colidirTela = false;
     universo.adicionarObjeto(planeta2);
 
-    
+    var planeta2 = new CorpoCeleste();
+    planeta2.x = 100+500+100;
+    planeta2.y = 200;
+    planeta2.setRaio(40);
+    planeta2.criarCSS();
+    //plane2ta.velX = 0.4;
+    //plane2ta.velY = 0.4;
+    planeta2.massa = 6000*10000000000;
+    planeta2.setCorpoFisico(true);
+    planeta2.setPegarComMouse(true);
+    planeta2.setCorpoEstatico(false);
+    planeta2.setAfetadoPelaGravidade(false);
+    planeta2.colidirTela = false;
+    universo.adicionarObjeto(planeta2);
+
+    */
     /*
     var planeta2 = new CorpoCeleste();
     planeta2.x = 450;
@@ -232,7 +248,7 @@ function carregarUniverso(){
     planeta2.setAfetadoPelaGravidade(false);
     universo.adicionarObjeto(planeta2);
     */
-    gerarCorposAleatorios(600);
+    gerarCorposAleatorios(650);
 
     iniciarGameEngine();
 
@@ -243,19 +259,19 @@ function carregarUniverso(){
 function gerarCorposAleatorios(n){
     for(var i = 0; i<n; i++){
         var planeta = new CorpoCeleste();
-        //planeta.x = getNumeroAleatorio(750, 800);
-        //planeta.y = getNumeroAleatorio(250, 300);
-        planeta.x = getNumeroAleatorio(540, 550);
+        planeta.x = getNumeroAleatorio(400, 500);
+        planeta.y = getNumeroAleatorio(500, 600);
+        //planeta.x = getNumeroAleatorio(540, 550);
         //planeta.y = getNumeroAleatorio(0, 0);
 
-        planeta.y = 10 + i*2/2;
-        var tamanho = getNumeroAleatorio(1, 3);
+        //planeta.y = 10 + i*2/2;
+        var tamanho = getNumeroAleatorio(1, 5);
 
         planeta.setRaio(tamanho);
         planeta.criarCSS();
-        planeta.velX = 0.8 * i/300;
-        //planeta.velX = getNumeroAleatorio(5,10);
-        //planeta.velY = getNumeroAleatorio(-2, 2);
+        //planeta.velX = 0.8 * i/300;
+        planeta.velX = getNumeroAleatorio(-0.0000002, 0.0000002);
+        planeta.velY = getNumeroAleatorio(-0.0000002, 0.0000002);
         planeta.massa = tamanho*10;
         planeta.setCorpoFisico(true);
         planeta.CorpoFisico = false; //COLISÃO DESLIGADA
@@ -263,6 +279,7 @@ function gerarCorposAleatorios(n){
         planeta.setCorpoEstatico(false);
         planeta.setAfetadoPelaGravidade(false);
         planeta.colidirTela = false;
+        planeta.setColidirTela(true);
         universo.adicionarObjeto(planeta);
     }
 }

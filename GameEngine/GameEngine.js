@@ -26,7 +26,7 @@ let tickPorSegundo = 60;
 let parar = false;
 let iniciado = false;
 let screenWidth = 1280;
-let screenHeight = 650;
+let screenHeight = 800;
 let mousePageX = 0; let corrigirX = 0;
 let mousePageY = 0; let corrigirY = 0;
 let mouseClientX = 0;
@@ -420,7 +420,7 @@ function pegarComMouse(object) {
 
     //object.addX(velMouseX);
     //object.addY(velMouseY);
-    object.velX = velMouseX; object.velY = velMouseY;
+    object.velX = velMouseX/deltaTime; object.velY = velMouseY/deltaTime;
 
   }
   else if (pegouObjetoComMouseId == 0 && (mouseIsDown && object.isCollided(mousePageX, mousePageY))) {
