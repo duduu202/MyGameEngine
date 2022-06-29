@@ -12,18 +12,18 @@ class Obstaculo {
     ObstaculoX;
     constructor() {
         this.comprimento = 100;
-        this.altura = 650;
-
-        this.buraco = getNumeroAleatorio(50, this.altura - 50);
-        this.tamanhoBuraco = -20; //-75
-        this.ObstaculoX = 500;
+        this.altura = screenHeight;
         this.velocidade = 2;
-        this.obstaculoCima = new Plataforma(this.comprimento, this.altura - this.buraco - this.tamanhoBuraco);
+        this.ObstaculoX = 500;
+        this.buraco = getNumeroAleatorio(50, this.altura - 50);
+        this.tamanhoBuraco = 70;
+        
+        this.obstaculoCima = new Plataforma(this.comprimento, this.altura);
         this.obstaculoCima.x = this.ObstaculoX;
-        this.obstaculoCima.y = 0;
+        this.obstaculoCima.y = - this.buraco - this.tamanhoBuraco;
         this.obstaculoCima.setPegarComMouse(true);
 
-        this.obstaculoBaixo = new Plataforma(this.comprimento, this.buraco - this.tamanhoBuraco);
+        this.obstaculoBaixo = new Plataforma(this.comprimento, this.altura);
         this.obstaculoBaixo.x = this.ObstaculoX;
         this.obstaculoBaixo.y = screenHeight - this.buraco + this.tamanhoBuraco;
         this.obstaculoBaixo.setPegarComMouse(true);

@@ -25,8 +25,8 @@ let deltaTime = 1;
 let tickPorSegundo = 60;
 let parar = false;
 let iniciado = false;
-let screenWidth = 1280;
-let screenHeight = 800;
+let screenWidth = window.innerWidth;//= 1280;
+let screenHeight = window.innerHeight;//= 800;
 let mousePageX = 0; let corrigirX = 0;
 let mousePageY = 0; let corrigirY = 0;
 let mouseClientX = 0;
@@ -462,6 +462,11 @@ function getNumeroAleatorio(min, max) {
 }
 
 //// Ferramentas ////
+window.onresize = reloadWindow;
+function reloadWindow() {
+  screenWidth = window.innerWidth;//= 1280;
+  screenHeight = window.innerHeight;//= 800;
+}
 
 function testeGameEngine() {
   //alert("testeGameEngine funcionou");
