@@ -11,12 +11,11 @@ class Obstaculo {
     obstaculoBaixo;
     ObstaculoX;
     constructor() {
-        //o tamanho esta certo, mas o css as vezes vem errado em altos valores
         this.comprimento = 100;
-        this.altura = 650
+        this.altura = 650;
 
         this.buraco = getNumeroAleatorio(50, this.altura - 50);
-        this.tamanhoBuraco = 60; //
+        this.tamanhoBuraco = -20; //-75
         this.ObstaculoX = 500;
         this.velocidade = 2;
         this.obstaculoCima = new Plataforma(this.comprimento, this.altura - this.buraco - this.tamanhoBuraco);
@@ -221,7 +220,7 @@ function carregarHappyBird() {
 
         inserirGame(happyBird);
 
-
+        
         bird = new Bird();
         bird.setColidirTela(true);
         bird.x = 200;

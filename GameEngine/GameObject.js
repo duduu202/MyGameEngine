@@ -180,12 +180,11 @@ class GameObject {
 		aplicarFisicas(this);
 	}
 	gameObjectDraw() {
-		if ((this.antigoX != this.x) || (this.antigoY != this.y)) {
-			atualizarDiv(this.id, this.x, this.y);
+		atualizarDiv(this.id, this.x, this.y);
 
-			if (this.drawHitbox == true)
-				atualizarDiv(`hitbox` + this.id, this.x, this.y);
-		}
+		if (this.drawHitbox == true)
+			atualizarDiv(`hitbox` + this.id, this.x, this.y);
+
 	}
 	tick() {
 		/*

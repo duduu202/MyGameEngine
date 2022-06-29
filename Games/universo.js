@@ -9,59 +9,59 @@ class Universo extends Game {
         
     }
 
-    cadaGravidade(objetos) {
-        var px=0, py=0, objx=0, objy=0, m1=0, m2=0;
+    cadaGravidade(objects) {
+        var x1=0, y1=0, x2=0, y2=0, mass1=0, mass2=0;
         //double objx = 0, objy = 0, m2 = 0;
         //Seleção dos corpos
         
-        for (var i = 0; i < objetos.length; i++) {
-            px = objetos[i].x;
-            py = objetos[i].y;
-            m1 = objetos[i].massa;
+        for (var i = 0; i < objects.length; i++) {
+            x1 = objects[i].x;
+            y1 = objects[i].y;
+            mass1 = objects[i].massa;
     
             //Não podemos calcular a gravidade do mesmo corpo, logo: i+1
-            for (var j = 1 + i; j < objetos.length; j++) {
-                    objx = objetos[j].x;
-                    objy = objetos[j].y;
-                    m2 = objetos[j].massa;
+            for (var j = 1 + i; j < objects.length; j++) {
+                    x2 = objects[j].x;
+                    y2 = objects[j].y;
+                    mass2 = objects[j].massa;
     
                     //Teorema de Pitagoras para calcular a distância
-                    var diferencaX = objx - px;
-                    var diferencaY = objy - py;
-                    var distancia = (diferencaX * diferencaX) + (diferencaY * diferencaY);
-                    distancia = Math.sqrt(distancia);
+                    var differenceX = x2 - x1;
+                    var differenceY = y2 - y1;
+                    var distance = (differenceX * differenceX) + (differenceY * differenceY);
+                    distance = Math.sqrt(distance);
     
                     //distancia *= 100;
     
                     //std::cout << distancia <<" " << i << j << "\n";
     
                     //OTIMIZAÇÃO temporaria e errada, pois corpos gigantes tem alcance maior de gravidade
-                    if (distancia > 5){ //&& distancia < 75000) { //0.02
+                    if (distance > 5){ //&& distancia < 75000) { //0.02
                            
                         //Newton's Law of Universal Gravitation
                         
-                        var F = ((G * m1 * m2) / Math.pow(distancia, 2));
+                        var F = ((G * mass1 * mass2) / Math.pow(distance, 2));
                         
                         //Algulo em radianos
-                        var anguloRadians = Math.atan2(diferencaY, diferencaX);
+                        var radiansAngle = Math.atan2(differenceY, differenceX);
     
-                        var divForX = Math.cos(anguloRadians); //Força dividida de acordo com o coseno
-                        var divForY = Math.sin(anguloRadians); //Força dividida de acordo com o seno
+                        var divForX = Math.cos(radiansAngle); //Força dividida de acordo com o coseno
+                        var divForY = Math.sin(radiansAngle); //Força dividida de acordo com o seno
     
-                        objetos[i].velX += ((divForX * F) / Math.pow(m1, 2) * 2) * deltaTime;
-                        objetos[i].velY += ((divForY * F) / Math.pow(m1, 2) * 2) * deltaTime;
+                        objects[i].velX += ((divForX * F) / Math.pow(mass1, 2) * 2) * deltaTime;
+                        objects[i].velY += ((divForY * F) / Math.pow(mass1, 2) * 2) * deltaTime;
                         
                         //Mesma força para ambos dos corpos :)
-                        objetos[j].velX += ((divForX * F) / Math.pow(m2, 2) * 2)*-1 * deltaTime;
-                        objetos[j].velY += ((divForY * F) / Math.pow(m2, 2) * 2)*-1 * deltaTime;
+                        objects[j].velX += ((divForX * F) / Math.pow(mass2, 2) * 2)*-1 * deltaTime;
+                        objects[j].velY += ((divForY * F) / Math.pow(mass2, 2) * 2)*-1 * deltaTime;
                     }
                     
                     if(trueCada(10) && !modoOtimizado){
 
                     
                     //CORES (de acordo com a sua velocidade)
-                    var vxc = objetos[i].velX;
-                    var vyc = objetos[i].velY;
+                    var vxc = objects[i].velX;
+                    var vyc = objects[i].velY;
 
                     if (vxc < 0)
                         vxc = vxc * -1;
@@ -74,12 +74,12 @@ class Universo extends Game {
                     var corG = media * 10;//media*1;
                     var corB = media * 5;//media*1;
                     
-                    objetos[i].cor = "rgb("+corR+","+corG+"," +corB+")";
-                    atualizarCssCor(objetos[i].getId(), objetos[i].cor);
+                    objects[i].cor = "rgb("+corR+","+corG+"," +corB+")";
+                    atualizarCssCor(objects[i].getId(), objects[i].cor);
 
                     /////////2
-                    vxc = objetos[j].velX;
-                    vyc = objetos[j].velY;
+                    vxc = objects[j].velX;
+                    vyc = objects[j].velY;
 
                     if (vxc < 0)
                         vxc = vxc * -1;
@@ -92,8 +92,8 @@ class Universo extends Game {
                     var corG2 = media * 10;//media*1;
                     var corB2 = media * 5;//media*1;
 
-                    objetos[j].cor = "rgb("+corR2+","+corG2+"," +corB2+")";
-                    atualizarCssCor(objetos[j].getId(), objetos[i].cor);
+                    objects[j].cor = "rgb("+corR2+","+corG2+"," +corB2+")";
+                    atualizarCssCor(objects[j].getId(), objects[i].cor);
                     }
 
             }
