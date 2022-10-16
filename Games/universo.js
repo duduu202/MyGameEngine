@@ -203,10 +203,10 @@ function carregarUniverso(){
     planeta.colidirTela = false;
     universo.adicionarObjeto(planeta);
 */
-/*
+
     var planeta2 = new CorpoCeleste();
-    planeta2.x = 100+500;
-    planeta2.y = 200; //700
+    planeta2.x = 500;
+    planeta2.y = 500; //700
     planeta2.setRaio(40);
     planeta2.criarCSS();
     //plane2ta.velX = 0.4;
@@ -218,7 +218,7 @@ function carregarUniverso(){
     planeta2.setAfetadoPelaGravidade(false);
     planeta2.colidirTela = false;
     universo.adicionarObjeto(planeta2);
-
+/*
     var planeta2 = new CorpoCeleste();
     planeta2.x = 100+500+100;
     planeta2.y = 200;
@@ -248,7 +248,7 @@ function carregarUniverso(){
     planeta2.setAfetadoPelaGravidade(false);
     universo.adicionarObjeto(planeta2);
     */
-    gerarCorposAleatorios(650);
+    gerarCorposAleatorios(400);
 
     iniciarGameEngine();
 
@@ -264,13 +264,13 @@ function gerarCorposAleatorios(n){
         //planeta.x = getNumeroAleatorio(540, 550);
         //planeta.y = getNumeroAleatorio(0, 0);
 
-        //planeta.y = 10 + i*2/2;
+        planeta.y = 10 + i*2/2;
         var tamanho = getNumeroAleatorio(1, 5);
 
         planeta.setRaio(tamanho);
         planeta.criarCSS();
-        //planeta.velX = 0.8 * i/300;
-        planeta.velX = getNumeroAleatorio(-0.0000002, 0.0000002);
+        planeta.velX = 0.9 * i/300;
+        //planeta.velX = getNumeroAleatorio(-0.0000002, 0.0000002);
         planeta.velY = getNumeroAleatorio(-0.0000002, 0.0000002);
         planeta.massa = tamanho*10;
         planeta.setCorpoFisico(true);
